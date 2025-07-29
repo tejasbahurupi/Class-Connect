@@ -87,16 +87,16 @@ const LoginPage = ({ role }) => {
   };
 
   const guestModeHandler = () => {
-    const password = "12345678";
+    const password = "zxc";
 
     if (role === "Admin") {
-      const email = "tjbahurupi07@gmail.com";
+      const email = "yogendra@12";
       const fields = { email, password };
       setGuestLoader(true);
       dispatch(loginUser(fields, role));
     } else if (role === "Student") {
       const rollNum = "1";
-      const studentName = "Tejas Bahurupi";
+      const studentName = "Dipesh Awasthi";
       const fields = { rollNum, studentName, password };
       setGuestLoader(true);
       dispatch(loginUser(fields, role));
@@ -143,7 +143,8 @@ const LoginPage = ({ role }) => {
           square
           sx={{
             backgroundColor: "#fff",
-          }}>
+          }}
+        >
           <Box
             sx={{
               my: 8,
@@ -151,7 +152,8 @@ const LoginPage = ({ role }) => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-            }}>
+            }}
+          >
             <Typography variant="h4" sx={{ mb: 2, color: "#2c2143" }}>
               {role} Login
             </Typography>
@@ -162,7 +164,8 @@ const LoginPage = ({ role }) => {
               component="form"
               noValidate
               onSubmit={handleSubmit}
-              sx={{ mt: 2 }}>
+              sx={{ mt: 2 }}
+            >
               {role === "Student" ? (
                 <>
                   <TextField
@@ -232,18 +235,20 @@ const LoginPage = ({ role }) => {
               />
               <Grid
                 container
-                sx={{ display: "flex", justifyContent: "space-between" }}>
-                <FormControlLabel
+                sx={{ display: "flex", justifyContent: "space-between" }}
+              >
+                {/* <FormControlLabel
                   control={<Checkbox value="remember" color="primary" />}
                   label="Remember me"
-                />
+                /> */}
                 <StyledLink href="#">Forgot password?</StyledLink>
               </Grid>
               <LightPurpleButton
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3 }}>
+                sx={{ mt: 3 }}
+              >
                 {loader ? (
                   <CircularProgress size={24} color="inherit" />
                 ) : (
@@ -265,7 +270,8 @@ const LoginPage = ({ role }) => {
       </Grid>
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-        open={guestLoader}>
+        open={guestLoader}
+      >
         <CircularProgress color="primary" />
         Please Wait
       </Backdrop>

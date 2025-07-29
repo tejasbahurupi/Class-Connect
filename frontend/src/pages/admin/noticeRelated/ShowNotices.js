@@ -73,29 +73,50 @@ const ShowNotices = () => {
     ];
 
     return (
-        <>
-            {loading ?
-                <div>Loading...</div>
-                :
-                <>
-                    {response ?
-                        <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-                            <GreenButton variant="contained"
-                                onClick={() => navigate("/Admin/addnotice")}>
-                                Add Notice
-                            </GreenButton>
-                        </Box>
-                        :
-                        <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-                            {Array.isArray(noticesList) && noticesList.length > 0 &&
-                                <TableTemplate buttonHaver={NoticeButtonHaver} columns={noticeColumns} rows={noticeRows} />
-                            }
-                            <SpeedDialTemplate actions={actions} />
-                        </Paper>
-                    }
-                </>
-            }
-        </>
+      <>
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <>
+            {response ? (
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  marginTop: "16px",
+                }}
+              >
+                <GreenButton
+                  variant="contained"
+                  onClick={() => navigate("/Admin/addnotice")}
+                >
+                  Add Notice
+                </GreenButton>
+              </Box>
+            ) : (
+              <Paper
+                sx={{
+                  width: "95%",
+                  overflow: "hidden",
+                  margin: "40px",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  minWidth: "min-content",
+                }}
+              >
+                {Array.isArray(noticesList) && noticesList.length > 0 && (
+                  <TableTemplate
+                    buttonHaver={NoticeButtonHaver}
+                    columns={noticeColumns}
+                    rows={noticeRows}
+                  />
+                )}
+                <SpeedDialTemplate actions={actions} />
+              </Paper>
+            )}
+          </>
+        )}
+      </>
     );
 };
 

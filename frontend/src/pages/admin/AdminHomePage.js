@@ -1,5 +1,6 @@
 import { Container, Grid, Paper } from '@mui/material'
 import styled from 'styled-components';
+import SeeNotice from "../../components/SeeNotice";
 import CountUp from 'react-countup';
 import Students from "../../assets/img1.png";
 import Classes from "../../assets/img2.png";
@@ -34,7 +35,13 @@ const AdminHomePage = () => {
       <>
         <Container maxWidth="lg" sx={{ mt: 4.5, mb: 4.5 }}>
           <Grid container spacing={12}>
-            <Grid item xs={12} md={4} lg={4} sx={{ marginTop: "40px", borderRadius: "40px"}}>
+            <Grid
+              item
+              xs={12}
+              md={4}
+              lg={4}
+              sx={{ marginTop: "40px", borderRadius: "40px" }}
+            >
               <StyledPaper>
                 <img src={Students} alt="Students" />
                 <Title>Total Students</Title>
@@ -55,6 +62,11 @@ const AdminHomePage = () => {
                 <Data start={0} end={numberOfTeachers} duration={2.5} />
               </StyledPaper>
             </Grid>
+            <Grid item xs={12} md={12} lg={12}>
+              <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
+                <SeeNotice />
+              </Paper>
+            </Grid>
           </Grid>
         </Container>
       </>
@@ -72,19 +84,16 @@ const StyledPaper = styled(Paper)`
   text-align: center;
   transition: background-color 0.3s ease;
   border-radius: 90px;
-  
 
   &:hover {
-    background-color: #e3c85f;
+    
     transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1)
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.1);
   }
-
-  
 `;
 
 const Title = styled.p`
-  font-size: 1.25rem;
+  font-size: 2rem;
   margin-bottom: 3px;
   font-weight: bold;
   color: #333;
@@ -92,7 +101,7 @@ const Title = styled.p`
 
 const Data = styled(CountUp)`
   font-size: calc(1.3rem + .6vw);
-  color: green;
+  
 `;
 
 export default AdminHomePage

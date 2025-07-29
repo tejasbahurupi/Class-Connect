@@ -22,7 +22,7 @@ const SeeComplains = () => {
 
   const complainColumns = [
     { id: 'user', label: 'User', minWidth: 170 },
-    { id: 'complaint', label: 'Complaint', minWidth: 100 },
+    { id: 'complaint', label: 'Feedback', minWidth: 100 },
     { id: 'date', label: 'Date', minWidth: 170 },
   ];
 
@@ -47,23 +47,42 @@ const SeeComplains = () => {
 
   return (
     <>
-      {loading ?
+      {loading ? (
         <div>Loading...</div>
-        :
+      ) : (
         <>
-          {response ?
-            <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
+          {response ? (
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "flex-end",
+                marginTop: "16px",
+              }}
+            >
               No Complains Right Now
             </Box>
-            :
-            <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-              {Array.isArray(complainsList) && complainsList.length > 0 &&
-                <TableTemplate buttonHaver={ComplainButtonHaver} columns={complainColumns} rows={complainRows} />
-              }
+          ) : (
+            <Paper
+              sx={{
+                width: "95%",
+                overflow: "hidden",
+                margin: "40px",
+                alignItems: "center",
+                justifyContent: "center",
+                minWidth: "min-content",
+              }}
+            >
+              {Array.isArray(complainsList) && complainsList.length > 0 && (
+                <TableTemplate
+                  buttonHaver={ComplainButtonHaver}
+                  columns={complainColumns}
+                  rows={complainRows}
+                />
+              )}
             </Paper>
-          }
+          )}
         </>
-      }
+      )}
     </>
   );
 };

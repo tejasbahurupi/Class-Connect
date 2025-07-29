@@ -25,11 +25,39 @@ const StudentAttendance = ({ situation }) => {
     const [subjectName, setSubjectName] = useState("");
     const [chosenSubName, setChosenSubName] = useState("");
     const [status, setStatus] = useState('');
-    const [date, setDate] = useState('');
+    //const [date, setDate] = useState('');
+    const [Error, setError] = useState("");
 
     const [showPopup, setShowPopup] = useState(false);
     const [message, setMessage] = useState("");
     const [loader, setLoader] = useState(false)
+
+    const getCurrentDate = () => {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = today.getMonth() + 1; // Months are zero-indexed
+        const day = today.getDate();
+
+        const formattedMonth = month < 10 ? `0${month}` : month;
+        const formattedDay = day < 10 ? `0${day}` : day;
+
+        return `${year}-${formattedMonth}-${formattedDay}`;
+    };
+
+    const [date, setDate] = useState(getCurrentDate());
+
+    const validateAttendanceDate = () => {
+        const currentDate = getCurrentDate();
+
+        if (date > currentDate) {
+            alert("Cannot mark attendance for future dates")
+            setError("Cannot mark attendance for future dates");
+            return false;
+        }
+
+        setError("");
+        return true;
+    };
 
     useEffect(() => {
         if (situation === "Student") {
@@ -62,9 +90,14 @@ const StudentAttendance = ({ situation }) => {
     const fields = { subName: chosenSubName, status, date }
 
     const submitHandler = (event) => {
-        event.preventDefault()
-        setLoader(true)
-        dispatch(updateStudentFields(studentID, fields, "StudentAttendance"))
+        if(validateAttendanceDate()){
+            event.preventDefault()
+            setLoader(true)
+            dispatch(updateStudentFields(studentID, fields, "StudentAttendance"))
+        }
+        // event.preventDefault()
+        // setLoader(true)
+        // dispatch(updateStudentFields(studentID, fields, "StudentAttendance"))
     }
 
     useEffect(() => {

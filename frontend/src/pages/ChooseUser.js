@@ -126,7 +126,7 @@ export default ChooseUser;
 
 const StyledContainer = styled.div`
   // background: linear-gradient(to bottom, #411d70, #19118b);
-  background-color: #e3c85f;
+  background-color: #21618c;
   height: 100vh;
   display: flex;
   justify-content: center;

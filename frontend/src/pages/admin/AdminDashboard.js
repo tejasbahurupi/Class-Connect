@@ -3,7 +3,7 @@ import {
     CssBaseline,
     Box,
     Toolbar,
-    List,
+    
     Typography,
     Divider,
     IconButton,
@@ -43,7 +43,7 @@ import ShowClasses from './classRelated/ShowClasses';
 import AccountMenu from '../../components/AccountMenu';
 
 const SidebarContainer = styled.div`
-  background-color: #e3c85f; // Change the background color of the sidebar
+   // Change the background color of the sidebar
   color: #1f294d;
   width: 250px;
   height: 100%;
@@ -51,6 +51,7 @@ const SidebarContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  color: #fff;
 `;
 
 const AdminDashboard = () => {
@@ -66,10 +67,9 @@ const AdminDashboard = () => {
           <AppBar
             open={open}
             position="absolute"
-            sx={{ backgroundColor: "#1F294D" }}
+            sx={{ backgroundColor: "#21618C " }}
           >
-            <Toolbar sx={{ pr: "24px", height: "90px" }}>
-              
+            <Toolbar sx={{ pr: "24px", height: "70px" }}>
               <IconButton
                 edge="start"
                 color="inherit"
@@ -77,6 +77,7 @@ const AdminDashboard = () => {
                 onClick={toggleDrawer}
                 sx={{
                   marginRight: "36px",
+                  backgroundColor: "#21618C ",
                   ...(open && { display: "none" }),
                 }}
               >
@@ -85,7 +86,6 @@ const AdminDashboard = () => {
               <Typography
                 component="h1"
                 variant="h6"
-                color="inherit"
                 noWrap
                 sx={{ flexGrow: 1 }}
               >
@@ -99,8 +99,11 @@ const AdminDashboard = () => {
             open={open}
             sx={open ? styles.drawerStyled : styles.hideDrawer}
           >
-            <Toolbar sx={styles.toolBarStyled}>
-              <IconButton onClick={toggleDrawer}>
+            <Toolbar
+              onClick={toggleDrawer}
+              sx={{ height: "7%" }}
+            >
+              <IconButton>
                 <ChevronLeftIcon />
               </IconButton>
             </Toolbar>

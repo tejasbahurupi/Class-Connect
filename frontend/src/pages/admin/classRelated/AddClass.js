@@ -11,12 +11,13 @@ import styled from "styled-components";
 
 const AddClass = () => {
     const [sclassName, setSclassName] = useState("");
-
+    const [error, setError] = useState("");
+    
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const userState = useSelector(state => state.user);
-    const { status, currentUser, response, error, tempDetails } = userState;
+    const { status, currentUser, response, error: apiError, tempDetails } = userState;
 
     const adminID = currentUser._id
     const address = "Sclass"
@@ -30,10 +31,25 @@ const AddClass = () => {
         adminID,
     };
 
+    const validateClassNameFormat = (className) => {
+        const classNameRegex = /^\d{2}-\d{2}$/;
+
+        if (!classNameRegex.test(className)) {
+            setError("Invalid class name format. Use the format '12-13'.");
+            return false;
+        }
+
+        setError("");
+        return true;
+    };
+
     const submitHandler = (event) => {
-        event.preventDefault()
-        setLoader(true)
-        dispatch(addStuff(fields, address))
+        event.preventDefault();
+
+        if (validateClassNameFormat(sclassName)) {
+            setLoader(true);
+            dispatch(addStuff(fields, address));
+        }
     };
 
     useEffect(() => {
@@ -41,18 +57,17 @@ const AddClass = () => {
             navigate("/Admin/classes/class/" + tempDetails._id)
             dispatch(underControl())
             setLoader(false)
-        }
-        else if (status === 'failed') {
+        } else if (status === 'failed') {
             setMessage(response)
             setShowPopup(true)
             setLoader(false)
-        }
-        else if (status === 'error') {
+        } else if (status === 'error') {
             setMessage("Network Error")
             setShowPopup(true)
             setLoader(false)
         }
-    }, [status, navigate, error, response, dispatch, tempDetails]);
+    }, [status, navigate, apiError, response, dispatch, tempDetails]);
+
     return (
         <>
             <StyledContainer>
@@ -70,13 +85,16 @@ const AddClass = () => {
                     <form onSubmit={submitHandler}>
                         <Stack spacing={3}>
                             <TextField
-                                label="Create a class"
+                                label="eg. 13-15"
                                 variant="outlined"
                                 value={sclassName}
                                 onChange={(event) => {
                                     setSclassName(event.target.value);
+                                    setError("");
                                 }}
                                 required
+                                error={error !== ""}
+                                helperText={error}
                             />
                             <BlueButton
                                 fullWidth
