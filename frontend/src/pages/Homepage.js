@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Container, Grid, Box, Button } from "@mui/material";
 import styled from "styled-components";
+import SendIcon from "@mui/icons-material/Send";
+import { LightPurpleOutlinedButton } from "../components/buttonStyles";
 import Students from "../assets/students.svg";
 import { LightPurpleButton } from "../components/buttonStyles";
 import { Diversity1Rounded } from "@mui/icons-material";
@@ -9,7 +11,7 @@ import { Diversity1Rounded } from "@mui/icons-material";
 const Homepage = () => {
   return (
     // <StyledContainer>
-    <div className="ashok">
+    <div className="container">
       <StyledTitle>Welcome to ClassConnect</StyledTitle>
       <StyledText className="home-text">
         Unlocking Potential, One Personalized Learning Journey at a Time –
@@ -18,17 +20,20 @@ const Homepage = () => {
       </StyledText>
       <StyledBox>
         <StyledLink to="/choose">
-          <LightPurpleButton variant="contained" fullWidth>
+          {/* <LightPurpleButton variant="contained" fullWidth>
             Login
-          </LightPurpleButton>
+          </LightPurpleButton> */}
+          <LightPurpleOutlinedButton variant="outlined" endIcon={<SendIcon />}>
+            Get Started
+          </LightPurpleOutlinedButton>
         </StyledLink>
 
-        <StyledText>
+        {/* <StyledText>
           Don't have an account?{" "}
           <Link to="/Adminregister" style={{ color: "#550080" }}>
             Sign up
           </Link>
-        </StyledText>
+        </StyledText> */}
       </StyledBox>
     </div>
   );
@@ -51,10 +56,10 @@ const StyledPaper = styled.div`
 const StyledBox = styled(Box)`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  gap: 16px;
-  padding: 24px;
+  gap: 2px;
+  padding: 0px;
 `;
 
 const StyledTitle = styled.h1`
@@ -73,6 +78,7 @@ const StyledText = styled.p`
   margin-bottom: 30px;
   letter-spacing: normal;
   line-height: normal;
+  padding-bottom: 10px;
 `;
 
 const StyledLink = styled(Link)`

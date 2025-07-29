@@ -8,6 +8,7 @@ const {
   getAdminDetail,
 } = require("../controllers/admin-controller.js");
 
+// const sendMail = require("../controllers/sendMail.js");
 const {
   sclassCreate,
   sclassList,
@@ -70,6 +71,7 @@ router.post("/AdminReg", adminRegister);
 router.post("/AdminLogin", adminLogIn);
 
 router.get("/Admin/:id", getAdminDetail);
+
 // router.delete("/Admin/:id", deleteAdmin)
 
 // router.put("/Admin/:id", updateAdmin)
@@ -81,6 +83,7 @@ router.post("/StudentLogin", studentLogIn);
 
 router.get("/Students/:id", getStudents);
 router.get("/Student/:id", getStudentDetail);
+// router.get("/mail",sendMail)
 
 router.delete("/Students/:id", deleteStudents);
 router.delete("/StudentsClass/:id", deleteStudentsByClass);
