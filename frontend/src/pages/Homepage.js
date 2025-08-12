@@ -11,7 +11,7 @@ import { Diversity1Rounded } from "@mui/icons-material";
 const Homepage = () => {
   return (
     // <StyledContainer>
-    <div className="container">
+    <div className="containrr">
       <StyledTitle>Welcome to ClassConnect</StyledTitle>
       <StyledText className="home-text">
         Unlocking Potential, One Personalized Learning Journey at a Time –

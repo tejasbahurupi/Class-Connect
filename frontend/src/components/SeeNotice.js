@@ -44,14 +44,21 @@ const SeeNotice = () => {
     };
   });
   return (
-    <div style={{ marginTop: "50px", marginRight: "20px" }}>
+    <div style={{ marginTop: "50px", marginRight: "20px", fontSize: "50px" }}>
       {loading ? (
         <div style={{ fontSize: "20px" }}>Loading...</div>
       ) : response ? (
         <div style={{ fontSize: "20px" }}>No Notices to Show Right Now</div>
       ) : (
         <>
-          <h3 style={{ fontSize: "30px", marginBottom: "40px" }}>Notices</h3>
+          <h3
+            style={{
+              fontSize: "30px",
+              marginBottom: "40px",
+              textAlign: "center",
+            }}>
+            Notices
+          </h3>
           <Paper
             sx={{
               width: "95%",
@@ -62,7 +69,11 @@ const SeeNotice = () => {
               minWidth: "min-content",
             }}>
             {Array.isArray(noticesList) && noticesList.length > 0 && (
-              <TableViewTemplate columns={noticeColumns} rows={noticeRows} />
+              <TableViewTemplate
+                columns={noticeColumns}
+                rows={noticeRows}
+                style={{ fontSize: "80px" }}
+              />
             )}
           </Paper>
         </>

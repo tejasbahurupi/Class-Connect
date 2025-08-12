@@ -6,7 +6,7 @@ const sendMail = async (req, res) => {
     service: "gmail",
     auth: {
       user: "tjbahurupi07@gmail.com",
-      pass: "cjzs wtsa abwa uqyn",
+      pass: process.env.nodeMailer_Password, // Use environment variable for security
     },
   });
 

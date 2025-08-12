@@ -1,105 +1,93 @@
-// import React, { useState } from 'react';
-// import { KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material'
-// import { useDispatch, useSelector } from 'react-redux';
-// import { deleteUser, updateUser } from '../../redux/userRelated/userHandle';
-// import { useNavigate } from 'react-router-dom'
-// import { authLogout } from '../../redux/userRelated/userSlice';
-// import { Button, Collapse } from '@mui/material';
-
-import { useSelector } from 'react-redux';
+import React from "react";
+import styled from "styled-components";
+import {
+  Card,
+  CardContent,
+  Typography,
+  Grid,
+  Box,
+  Avatar,
+  Container,
+  Paper,
+} from "@mui/material";
+import { useSelector } from "react-redux";
 
 const AdminProfile = () => {
-    // const [showTab, setShowTab] = useState(false);
-    // const buttonText = showTab ? 'Cancel' : 'Edit profile';
+  const { currentUser } = useSelector((state) => state.user);
 
-    // const navigate = useNavigate()
-    // const dispatch = useDispatch();
-        const { currentUser } = useSelector((state) => state.user);
-    // const { currentUser, response, error } = useSelector((state) => state.user);
-    // const address = "Admin"
+  return (
+    <Container maxWidth="md">
+      <StyledPaper elevation={3}>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <Box display="flex" justifyContent="center">
+              <Avatar
+                alt="Admin Avatar"
+                sx={{ width: 150, height: 150, fontSize: "64px" }}>
+                {String(currentUser.name).charAt(0)}
+              </Avatar>
+            </Box>
+          </Grid>
+          <Grid item xs={12}>
+            <Box display="flex" justifyContent="center">
+              <Typography variant="h5" component="h2" textAlign="center">
+                {currentUser.name}
+              </Typography>
+            </Box>
+          </Grid>
+          <Grid item xs={12}>
+            <Box display="flex" justifyContent="center">
+              <Typography variant="subtitle1" component="p" textAlign="center">
+                Admin Email:{currentUser.email}
+              </Typography>
+            </Box>
+          </Grid>
+          {/* Additional personal information */}
+          <Grid item xs={12}>
+            <Box display="flex" justifyContent="center">
+              <Typography variant="subtitle1" component="p" textAlign="center">
+                Phone: 9012345678{currentUser.phone}
+              </Typography>
+            </Box>
+          </Grid>
+          <Grid item xs={12}>
+            <Box display="flex" justifyContent="center">
+              <Typography variant="subtitle1" component="p" textAlign="center">
+                Address: {" Mumbai"}
+              </Typography>
+            </Box>
+          </Grid>
+        </Grid>
+      </StyledPaper>
+      <Card>
+        <CardContent>
+          <Typography variant="h6" gutterBottom>
+            Personal Information
+          </Typography>
+          <Grid container spacing={2}>
+            {/* Include additional information as needed */}
+            <Grid item xs={12} sm={6}>
+              <Typography variant="subtitle1" component="p">
+                <strong>Date of Birth:</strong>{" "}
+                {currentUser.dateOfBirth || "28/02/2002"}
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Typography variant="subtitle1" component="p">
+                <strong>Gender:</strong> {currentUser.gender || "Male"}
+              </Typography>
+            </Grid>
+          </Grid>
+        </CardContent>
+      </Card>
+    </Container>
+  );
+};
 
-    // if (response) { console.log(response) }
-    // else if (error) { console.log(error) }
+export default AdminProfile;
 
-    // const [name, setName] = useState(currentUser.name);
-    // const [email, setEmail] = useState(currentUser.email);
-    // const [password, setPassword] = useState("");
-    // const [schoolName, setSchoolName] = useState(currentUser.schoolName);
-
-    // const fields = password === "" ? { name, email, schoolName } : { name, email, password, schoolName }
-
-    // const submitHandler = (event) => {
-    //     event.preventDefault()
-    //     dispatch(updateUser(fields, currentUser._id, address))
-    // }
-
-    // const deleteHandler = () => {
-    //     try {
-    //         dispatch(deleteUser(currentUser._id, "Students"));
-    //         dispatch(deleteUser(currentUser._id, address));
-    //         dispatch(authLogout());
-    //         navigate('/');
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // }
-
-    return (
-        <div>
-            Name: {currentUser.name}
-            <br />
-            Email: {currentUser.email}
-            <br />
-            {/* School: {currentUser.schoolName}
-            <br /> */}
-            {/* <Button variant="contained" color="error" onClick={deleteHandler}>Delete</Button> */}
-            {/* <Button variant="contained" sx={styles.showButton}
-                onClick={() => setShowTab(!showTab)}>
-                {showTab ? <KeyboardArrowUp /> : <KeyboardArrowDown />}{buttonText}
-            </Button>
-            <Collapse in={showTab} timeout="auto" unmountOnExit>
-                <div className="register">
-                    <form className="registerForm" onSubmit={submitHandler}>
-                        <span className="registerTitle">Edit Details</span>
-                        <label>Name</label>
-                        <input className="registerInput" type="text" placeholder="Enter your name..."
-                            value={name}
-                            onChange={(event) => setName(event.target.value)}
-                            autoComplete="name" required />
-
-                        <label>School</label>
-                        <input className="registerInput" type="text" placeholder="Enter your school name..."
-                            value={schoolName}
-                            onChange={(event) => setSchoolName(event.target.value)}
-                            autoComplete="name" required />
-
-                        <label>Email</label>
-                        <input className="registerInput" type="email" placeholder="Enter your email..."
-                            value={email}
-                            onChange={(event) => setEmail(event.target.value)}
-                            autoComplete="email" required />
-
-                        <label>Password</label>
-                        <input className="registerInput" type="password" placeholder="Enter your password..."
-                            value={password}
-                            onChange={(event) => setPassword(event.target.value)}
-                            autoComplete="new-password" />
-
-                        <button className="registerButton" type="submit" >Update</button>
-                    </form>
-                </div>
-            </Collapse> */}
-        </div>
-    )
-}
-
-export default AdminProfile
-
-// const styles = {
-//     attendanceButton: {
-//         backgroundColor: "#270843",
-//         "&:hover": {
-//             backgroundColor: "#3f1068",
-//         }
-//     }
-// }
+const StyledPaper = styled(Paper)`
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-top: 40px;
+`;

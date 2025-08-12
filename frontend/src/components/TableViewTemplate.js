@@ -21,7 +21,7 @@ const TableViewTemplate = ({ columns, rows }) => {
                 <StyledTableCell
                   key={index}
                   align={column.align}
-                  style={{ minWidth: column.minWidth }}>
+                  style={{ minWidth: column.minWidth, fontSize: "20px" }}>
                   {column.label}
                 </StyledTableCell>
               ))}

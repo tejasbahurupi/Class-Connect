@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import Upload from "./Upload";
 
 const TeacherComplain = () => {
   return (
-    <div>TeacherComplain</div>
-  )
-}
+    <div>
+      <Upload />
+    </div>
+  );
+};
 
-export default TeacherComplain
+export default TeacherComplain;

@@ -21,7 +21,98 @@ a {
   display: none;
 }
 
-.container {
+.upload-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the form vertically */
+  border: 2px;
+  border-radius: 20px;
+
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.form-group {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="file"] {
+  display: inline-block;
+  width: 80%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* .form-group button {
+  background-color: #1670c9;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+} */
+
+.output-div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 46px;
+  justify-content: inherit; /* Align the PDF list to the left */
+}
+
+.inner-div {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.inner-div h6 {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+.showbtn {
+  background-color: #fff;
+  border: 0 solid #e2e8f0;
+  border-radius: 1.5rem;
+  box-sizing: border-box;
+  color: #0d172a;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Basier circle", -apple-system, system-ui, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: 1rem 1rem;
+  text-align: center;
+  text-decoration: none #0d172a solid;
+  text-decoration-thickness: auto;
+  transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.showbtn:hover {
+  background-color: #1670c9;
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  .button-81 {
+    font-size: 1.125rem;
+    padding: 1rem 2rem;
+  }
+}
+
+.containrr {
   background-image: url("https://images.unsplash.com/photo-1510070009289-b5bc34383727?q=80&w=2938&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   background-size: cover;
   background-position: center;
