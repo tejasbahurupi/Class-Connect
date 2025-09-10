@@ -1,12 +1,8 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { Container, Grid, Box, Button } from "@mui/material";
 import styled from "styled-components";
 import SendIcon from "@mui/icons-material/Send";
 import { LightPurpleOutlinedButton } from "../components/buttonStyles";
-import Students from "../assets/students.svg";
-import { LightPurpleButton } from "../components/buttonStyles";
-import { Diversity1Rounded } from "@mui/icons-material";
 
 const Homepage = () => {
   return (
