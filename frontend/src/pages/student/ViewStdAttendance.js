@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import {
   BottomNavigation,

@@ -25,7 +25,7 @@ mongoose
   .then(console.log("Connected to MongoDB"))
   .catch((err) => console.log("NOT CONNECTED TO NETWORK", err));
 
-app.use("/", Routes);
+app.use("/", Routes); //defining routes
 
 //multer
 const multer = require("multer");
@@ -43,6 +43,7 @@ const storage = multer.diskStorage({
 require("./models/pdfDetails.js");
 const PdfSchema = mongoose.model("PdfDetails");
 const upload = multer({ storage: storage });
+
 app.post("/upload-files", upload.single("file"), async (req, res) => {
   console.log(req.file);
   const title = req.body.title;
@@ -62,7 +63,9 @@ app.get("/get-files", async (req, res) => {
     PdfSchema.find({}).then((data) => {
       res.send({ status: "ok", data: data });
     });
-  } catch (error) {}
+  } catch (error) {
+    res.json({ status: error });
+  }
 });
 
 // require("./pdfDetails");

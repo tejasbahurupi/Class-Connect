@@ -30,8 +30,8 @@ const TeacherHomePage = () => {
     dispatch(getClassStudents(classID));
   }, [dispatch, subjectID, classID]);
 
-  const numberOfStudents = sclassStudents && sclassStudents.length;
-  const numberOfSessions = subjectDetails && subjectDetails.sessions;
+  const numberOfStudents = sclassStudents ? sclassStudents.length : 0;
+  const numberOfSessions = subjectDetails ? subjectDetails.sessions : 0;
 
   return (
     <>
@@ -41,14 +41,18 @@ const TeacherHomePage = () => {
             <StyledPaper>
               <img src={Students} alt="Students" />
               <Title>Class Students</Title>
-              <Data start={0} end={numberOfStudents} duration={2.5} />
+              {sclassStudents && (
+                <Data start={0} end={numberOfStudents} duration={2.5} />
+              )}
             </StyledPaper>
           </Grid>
           <Grid item xs={12} md={3} lg={3}>
             <StyledPaper>
               <img src={Lessons} alt="Lessons" />
               <Title>Total Lessons</Title>
-              <Data start={0} end={numberOfSessions} duration={5} />
+              {subjectDetails.sessions && (
+                <Data start={0} end={numberOfSessions} duration={5} />
+              )}
             </StyledPaper>
           </Grid>
           <Grid item xs={12} md={3} lg={3}>

@@ -65,10 +65,11 @@ const {
   updateTeacherSubject,
   teacherAttendance,
 } = require("../controllers/teacher-controller.js");
-const { getMeetings } = require("../controllers/zoom-controller.js");
+const { createMeeting } = require("../controllers/zoom-controller.js");
 
 //ZOOM
-router.post("/zoomLink", getMeetings);
+//router.post("/zoomLink", getMeetings);
+router.post("/create-meeting", createMeeting);
 
 // Admin
 router.post("/AdminReg", adminRegister);
@@ -165,5 +166,9 @@ router.get("/Subject/:id", getSubjectDetail);
 router.delete("/Subject/:id", deleteSubject);
 router.delete("/Subjects/:id", deleteSubjects);
 router.delete("/SubjectsClass/:id", deleteSubjectsByClass);
+
+//create meeting
+
+router.post("/create-meeting", createMeeting);
 
 module.exports = router;
