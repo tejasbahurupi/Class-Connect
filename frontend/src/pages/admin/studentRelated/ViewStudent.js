@@ -11,7 +11,6 @@ import {
   Box,
   Button,
   Collapse,
-  IconButton,
   Table,
   TableBody,
   TableHead,
@@ -49,7 +48,7 @@ import TableChartOutlinedIcon from "@mui/icons-material/TableChartOutlined";
 import Popup from "../../../components/Popup";
 
 const ViewStudent = () => {
-  const [showTab, setShowTab] = useState(false);
+  // const [showTab, setShowTab] = useState(false);
   const { subjectsList } = useSelector((state) => state.sclass); // Change 'state.sclass' to the actual path in your state
 
   const navigate = useNavigate();

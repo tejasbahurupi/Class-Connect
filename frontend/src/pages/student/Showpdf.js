@@ -18,36 +18,36 @@ function Showpdf() {
     setAllImage(result.data.data);
   };
 
-  const handleTitleChange = (e) => {
-    setTitle(e.target.value);
-  };
+  // const handleTitleChange = (e) => {
+  //   setTitle(e.target.value);
+  // };
 
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
-  };
+  // const handleFileChange = (e) => {
+  //   setFile(e.target.files[0]);
+  // };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(currentUser._id);
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("file", file);
-    formData.append("user", currentUser._id);
-    console.log(title, file);
-    const result = await axios.post(
-      "http://localhost:5000/upload-files",
-      formData,
-      {
-        headers: { "Content-Type": "multipart/form-data" },
-      }
-    );
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   console.log(currentUser._id);
+  //   const formData = new FormData();
+  //   formData.append("title", title);
+  //   formData.append("file", file);
+  //   formData.append("user", currentUser._id);
+  //   console.log(title, file);
+  //   const result = await axios.post(
+  //     "http://localhost:5000/upload-files",
+  //     formData,
+  //     {
+  //       headers: { "Content-Type": "multipart/form-data" },
+  //     }
+  //   );
 
-    console.log(result);
-    if (result.data.status === "ok") {
-      alert("Uploaded Successfully!!!");
-      getPdf();
-    }
-  };
+  //   console.log(result);
+  //   if (result.data.status === "ok") {
+  //     alert("Uploaded Successfully!!!");
+  //     getPdf();
+  //   }
+  // };
 
   const showPdf = (pdf) => {
     window.open(`http://localhost:5000/files/${pdf}`, "_blank", "noreferrer");
@@ -61,12 +61,10 @@ function Showpdf() {
             textAlign: "center",
             marginTop: "20px",
             marginBottom: "20px",
-          }}
-        >
+          }}>
           Uploaded PDF:
         </h2>
         <div className="output-div">
-        
           {allImage == null
             ? ""
             : allImage.map(
@@ -77,8 +75,7 @@ function Showpdf() {
                       <h5>Title: {data.title}</h5>
                       <button
                         className="showbtn"
-                        onClick={() => showPdf(data.pdf)}
-                      >
+                        onClick={() => showPdf(data.pdf)}>
                         Show Pdf
                       </button>
                     </div>

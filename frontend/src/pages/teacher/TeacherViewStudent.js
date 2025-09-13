@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails } from "../../redux/userRelated/userHandle";
 import { useNavigate, useParams } from "react-router-dom";
@@ -12,7 +12,6 @@ import {
   Typography,
   Container,
   Tab,
-  IconButton,
   Paper,
   BottomNavigation,
   BottomNavigationAction,
@@ -30,7 +29,6 @@ import {
 import CustomPieChart from "../../components/CustomPieChart";
 import { PurpleButton } from "../../components/buttonStyles";
 import { StyledTableCell, StyledTableRow } from "../../components/styles";
-
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";

@@ -11,11 +11,9 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { deleteUser } from "../../../redux/userRelated/userHandle";
 import { getAllSclasses } from "../../../redux/sclassRelated/sclassHandle";
 import { BlueButton, GreenButton } from "../../../components/buttonStyles";
 import TableTemplate from "../../../components/TableTemplate";
-
 import SpeedDialIcon from "@mui/material/SpeedDialIcon";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
@@ -86,14 +84,12 @@ const ShowClasses = () => {
       <ButtonContainer>
         <IconButton
           onClick={() => deleteHandler(row.id, "Sclass")}
-          color="secondary"
-        >
+          color="secondary">
           <DeleteIcon color="error" />
         </IconButton>
         <BlueButton
           variant="contained"
-          onClick={() => navigate("/Admin/classes/class/" + row.id)}
-        >
+          onClick={() => navigate("/Admin/classes/class/" + row.id)}>
           View
         </BlueButton>
         <ActionMenu actions={actions} />
@@ -115,8 +111,7 @@ const ShowClasses = () => {
     return (
       <>
         <Box
-          sx={{ display: "flex", alignItems: "center", textAlign: "center" }}
-        >
+          sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
           <Tooltip title="Add Students & Subjects">
             <IconButton
               onClick={handleClick}
@@ -124,8 +119,7 @@ const ShowClasses = () => {
               sx={{ ml: 2 }}
               aria-controls={open ? "account-menu" : undefined}
               aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
-            >
+              aria-expanded={open ? "true" : undefined}>
               <h5>Add</h5>
               <SpeedDialIcon />
             </IconButton>
@@ -142,8 +136,7 @@ const ShowClasses = () => {
             sx: styles.styledPaper,
           }}
           transformOrigin={{ horizontal: "right", vertical: "top" }}
-          anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-        >
+          anchorOrigin={{ horizontal: "right", vertical: "bottom" }}>
           {actions.map((action) => (
             <MenuItem onClick={action.action}>
               <ListItemIcon fontSize="small">{action.icon}</ListItemIcon>
@@ -180,12 +173,10 @@ const ShowClasses = () => {
                 display: "flex",
                 justifyContent: "flex-end",
                 marginTop: "16px",
-              }}
-            >
+              }}>
               <GreenButton
                 variant="contained"
-                onClick={() => navigate("/Admin/addclass")}
-              >
+                onClick={() => navigate("/Admin/addclass")}>
                 Add Class
               </GreenButton>
             </Box>
@@ -198,8 +189,7 @@ const ShowClasses = () => {
                 alignItems: "center",
                 justifyContent: "center",
                 minWidth: "min-content",
-              }}
-            >
+              }}>
               {Array.isArray(sclassesList) && sclassesList.length > 0 && (
                 <TableTemplate
                   buttonHaver={SclassButtonHaver}

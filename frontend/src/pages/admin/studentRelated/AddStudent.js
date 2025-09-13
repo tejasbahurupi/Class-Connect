@@ -81,7 +81,11 @@ const AddStudent = ({ situation }) => {
       dispatch(underControl());
       navigate(-1);
     } else if (status === "failed") {
-      setMessage(response);
+      const errorMessage =
+        response?.data?.message ||
+        response?.message ||
+        "An unknown error occurred";
+      setMessage(errorMessage);
       setShowPopup(true);
       setLoader(false);
     } else if (status === "error") {

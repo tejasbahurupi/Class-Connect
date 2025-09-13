@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Container, Grid, Box, Button } from "@mui/material";
+import { Container, Box } from "@mui/material";
 import styled from "styled-components";
 import SendIcon from "@mui/icons-material/Send";
 import { LightPurpleOutlinedButton } from "../components/buttonStyles";
@@ -37,17 +37,17 @@ const Homepage = () => {
 
 export default Homepage;
 
-const StyledContainer = styled(Container)`
-  min-height: 100vh; /* Make sure the container covers at least the viewport height */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+// const StyledContainer = styled(Container)`
+//   min-height: 100vh; /* Make sure the container covers at least the viewport height */
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// `;
 
-const StyledPaper = styled.div`
-  padding: 24px;
-  height: 100vh;
-`;
+// const StyledPaper = styled.div`
+//   padding: 24px;
+//   height: 100vh;
+// `;
 
 const StyledBox = styled(Box)`
   display: flex;

@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getUserDetails } from "../../../redux/userRelated/userHandle";
 import { getSubjectList } from "../../../redux/sclassRelated/sclassHandle";
 import { updateStudentFields } from "../../../redux/studentRelated/studentHandle";
-
 import {
   Box,
   InputLabel,
@@ -79,13 +78,13 @@ const StudentAttendance = ({ situation }) => {
       dispatch(getUserDetails(studentID, "Student"));
       setChosenSubName(subjectID);
     }
-  }, [situation]);
+  }, [situation, params, dispatch]);
 
   useEffect(() => {
     if (userDetails && userDetails.sclassName && situation === "Student") {
       dispatch(getSubjectList(userDetails.sclassName._id, "ClassSubjects"));
     }
-  }, [dispatch, userDetails]);
+  }, [dispatch, userDetails, situation]);
 
   const changeHandler = (event) => {
     const selectedSubject = subjectsList.find(

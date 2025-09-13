@@ -1,4 +1,3 @@
-import * as React from "react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,8 +6,6 @@ import {
   Box,
   Typography,
   Paper,
-  Checkbox,
-  FormControlLabel,
   TextField,
   CssBaseline,
   IconButton,
@@ -17,7 +14,6 @@ import {
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import bgpic from "../../assets/designlogin.jpg";
 import { LightPurpleButton } from "../../components/buttonStyles";
 import { registerUser } from "../../redux/userRelated/userHandle";
 import styled from "styled-components";
@@ -99,8 +95,7 @@ const AdminRegisterPage = () => {
           md={12}
           component={Paper}
           elevation={6}
-          square
-        >
+          square>
           <Box
             sx={{
               my: 8,
@@ -108,8 +103,7 @@ const AdminRegisterPage = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-            }}
-          >
+            }}>
             <Typography variant="h4" sx={{ mb: 2, color: "#2c2143" }}>
               Admin Register
             </Typography>
@@ -123,8 +117,7 @@ const AdminRegisterPage = () => {
               component="form"
               noValidate
               onSubmit={handleSubmit}
-              sx={{ mt: 2 }}
-            >
+              sx={{ mt: 2 }}>
               <TextField
                 margin="normal"
                 required
@@ -186,8 +179,7 @@ const AdminRegisterPage = () => {
               />
               <Grid
                 container
-                sx={{ display: "flex", justifyContent: "space-between" }}
-              >
+                sx={{ display: "flex", justifyContent: "space-between" }}>
                 {/* <FormControlLabel
                   control={<Checkbox value="remember" color="primary" />}
                   label="Remember me"
@@ -197,8 +189,7 @@ const AdminRegisterPage = () => {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
+                sx={{ mt: 3, mb: 2 }}>
                 {loader ? (
                   <CircularProgress size={24} color="inherit" />
                 ) : (
