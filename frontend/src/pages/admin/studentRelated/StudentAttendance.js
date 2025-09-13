@@ -66,25 +66,24 @@ const StudentAttendance = ({ situation }) => {
     setError("");
     return true;
   };
+  const { id, studentID: paramStudentID, subjectID: paramSubjectID } = params;
 
   useEffect(() => {
-    if (situation === "Student") {
-      setStudentID(params.id);
-      const stdID = params.id;
-      dispatch(getUserDetails(stdID, "Student"));
-    } else if (situation === "Subject") {
-      const { studentID, subjectID } = params;
-      setStudentID(studentID);
-      dispatch(getUserDetails(studentID, "Student"));
-      setChosenSubName(subjectID);
+    if (situation === "Student" && id) {
+      setStudentID(id);
+      dispatch(getUserDetails(id, "Student"));
+    } else if (situation === "Subject" && paramStudentID) {
+      setStudentID(paramStudentID);
+      dispatch(getUserDetails(paramStudentID, "Student"));
+      setChosenSubName(paramSubjectID);
     }
-  }, [situation, params, dispatch]);
+  }, [situation, id, paramStudentID, paramSubjectID, dispatch]);
 
   useEffect(() => {
-    if (userDetails && userDetails.sclassName && situation === "Student") {
+    if (situation === "Student" && userDetails?.sclassName?._id) {
       dispatch(getSubjectList(userDetails.sclassName._id, "ClassSubjects"));
     }
-  }, [dispatch, userDetails, situation]);
+  }, [situation, userDetails?.sclassName?._id, dispatch]);
 
   const changeHandler = (event) => {
     const selectedSubject = subjectsList.find(
@@ -147,7 +146,7 @@ const StudentAttendance = ({ situation }) => {
               }}>
               <Stack spacing={1} sx={{ mb: 3 }}>
                 <Typography variant="h4">
-                  Student Name: {userDetails.name}
+                  Student Name: {userDetails?.name ?? "Loading..."}
                 </Typography>
                 {currentUser.teachSubject && (
                   <Typography variant="h4">
